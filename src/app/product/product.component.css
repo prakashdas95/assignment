@@ -1,0 +1,54 @@
+::ng-deep.mat-dialog-container {
+    padding: 0px 0px !important;
+    overflow: hidden !important;
+}
+
+#header{
+    padding: 15px 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: rgb(35, 35, 43);
+}
+
+.sale-details{
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.sale-date{
+    font-weight: 500;
+}
+
+.order-details-header{
+    margin-bottom: 10px;
+    font-weight: 400;
+    color: black;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+.order-details-total{
+    font-weight: 400;
+    color: black;
+    height: 50px;
+
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+}
+.order-details-tax{
+    font-weight: 400;
+    color: black;
+    height: 50px;
+
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+}
+
+
+.button{
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
