@@ -88,16 +88,29 @@ export class AppComponent implements OnInit {
   public addItemToCart(cart: Product[], item: Product) {
     const existingCartItem = cart.find(product => product.name === item.name);
     if (existingCartItem) {
-      return cart.map(cartItem => cartItem.name === item.name ? { ...cartItem, count: cartItem.count + 1 } : cartItem);
-    }
+      console.log('existingCartItem');
+      console.log(existingCartItem);
+      return cart.map(cartItem => {
 
-    return [...cart, { ...item, count: 1 }];
+        if (cartItem.name === item.name) {
+          cartItem.count++;
+          console.log('countttt', cartItem.count);
+          return { ...cartItem, total: +cartItem.price * cartItem.count }
+        }
+        return cartItem
+      });
+    }
+    console.log(item);
+    console.log('unique');
+    item.count = item.count === 0 ? 1 : item.count;
+    return [...cart, { ...item, count: 1, total: +item.price * item.count }];
   }
 
 
   public increaseProductCount(item: Product | any) {
     item.count++;
-    // console.log(this.cart);
+    console.log('test increase', item);
+    item.total = item.count * +item.price
     this.calculateSubTotal(this.cart);
   }
 
@@ -106,7 +119,8 @@ export class AppComponent implements OnInit {
       return;
     }
     item.count--;
-    // console.log(this.cart);
+    console.log('test decrease', item);
+    item.total = item.count * +item.price
     this.calculateSubTotal(this.cart);
 
   }
@@ -127,16 +141,16 @@ export class AppComponent implements OnInit {
     this.cart = [];
     this.subTotalPrice = 0;
     this.subTotalItems = 0;
-    // this.total = 0;
     this.vatTotal = '0';
     this.discountTotal = '0';
     this.grandTotal = 0;
   }
 
   public calculateSubTotal(cartItems: Product[]) {
-    console.log(typeof cartItems[0].price, typeof cartItems[0].count);
+    // console.log(typeof cartItems[0].price, typeof cartItems[0].count);
     this.subTotalItems = cartItems.reduce((acc, cur) => acc + cur.count, 0);
     this.subTotalPrice = cartItems.reduce((acc, cur) => acc + cur.count * +cur.price, 0);
+    // cartItems.reduce((acc, acc) => acc. + cur )
 
     this.vatTotal = this.calculateVAT(this.vat, this.subTotalPrice);
     // console.log('vat total: ', this.vatTotal);
@@ -150,7 +164,7 @@ export class AppComponent implements OnInit {
   }
 
   public calculateVAT(vat: string, subTotal: number) {
-    console.log('vat', vat);
+    // console.log('vat', vat);
     return (subTotal * Number(vat) / 100).toFixed(2).toString();
   }
 

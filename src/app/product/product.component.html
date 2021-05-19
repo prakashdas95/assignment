@@ -12,8 +12,8 @@
 
     <div style="height: 100px;overflow-y: scroll; overflow-x: hidden;">
         <div class="order-details-header" mat-dialog-content style="border-bottom: 1px solid lightgray;"
-            *ngFor="let order of orders;">
-            <div>{{'#'}}</div>
+            *ngFor="let order of orders;let i = index;">
+            <div>#{{i + 1}}</div>
             <div>{{order.name}}</div>
             <div>{{order.count}}</div>
             <div>
@@ -26,7 +26,7 @@
     <div class="order-details-total" mat-dialog-content style="border-bottom: 1px solid lightgray;">
         <div>Total Items</div>
         <div>{{subtotalItems}} Total</div>
-        <div style="font-weight: 600;">{{"not"}} INR</div>
+        <div style="font-weight: 600;">{{subTotalPrice}} INR</div>
     </div>
 
     <div class="order-details-tax" mat-dialog-content style="border-bottom: 1px solid lightgray;">

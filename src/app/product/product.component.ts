@@ -26,11 +26,13 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     const { orders, subTotalPrice, subtotalItems, vat, discount }: Orders = this.orderDetails;
+    console.log('orders: ', orders);
     this.orders = orders
     this.subTotalPrice = subTotalPrice;
     this.subtotalItems = subtotalItems;
     this.vat = vat;
     this.discount = discount;
+
   }
 
 
