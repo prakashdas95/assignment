@@ -61,14 +61,16 @@
           <div>{{subTotalItems}} items</div>
         </div>
         <div class="action-box-item">
-          <div>
-            <input matInput style="border: 1px solid lightgray; width:100px" [(ngModel)]="vat">
+          <div class="action-box-input">
+            <input matInput class="action-input-style" [(ngModel)]="vat">
+            <strong class="input-percentage">%</strong>
           </div>
           <div>{{vatTotal}} EUR</div>
         </div>
         <div class="action-box-item">
-          <div>
-            <input matInput value="10%" style="border: 1px solid lightgray; width:100px" [(ngModel)]="discount">
+          <div class="action-box-input">
+            <input matInput class="action-input-style" [(ngModel)]="discount">
+            <strong class="input-percentage">%</strong>
           </div>
           <div>{{discountTotal}} EUR</div>
         </div>
@@ -87,11 +89,12 @@
 
     <div class="product-container">
       <div class="product-item" *ngFor="let product of products" (click)="clickToAdd(product)">
+        <img class="product-item-image" src="../assets/images/{{product.image}}" alt=" product image">
         <p class="product-item-name">{{product.name | uppercase}}</p>
         <p class="product-item-price">{{product.price}}</p>
         <p class="product-item-description">{{product.description}}</p>
-        <!-- <p>product.image</p>
-        <p>product.category</p> -->
+        <!-- <p src='assets/image/clothing.jpg>product.image</p> -->
+        <!-- <p>product.category</p> -->
       </div>
     </div>
 
