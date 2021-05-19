@@ -18,10 +18,10 @@ interface Orders {
 export class ProductComponent implements OnInit {
 
   public orders: Product[] = [];
-  public subTotalPrice = 0
-  public subtotalItems = 0;
-  public vat = 0;
-  public discount = 0;
+  public subTotalPrice: number = 0
+  public subtotalItems: number = 0;
+  public vat: number = 0;
+  public discount: number = 0;
   constructor(@Inject(MAT_DIALOG_DATA) public orderDetails: Orders) { }
 
   ngOnInit(): void {

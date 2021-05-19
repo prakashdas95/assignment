@@ -173,11 +173,3 @@ export class AppComponent implements OnInit {
 }
 
 
-// Argument of type
-// '(Product | { count: number; category: string; description: string; image: string; name: string; price: string; })[]'
-// is not assignable to parameter of type 'Product'.
-//   Type '(Product | { count: number; category: string; description: string; image: string; name: string; price: string; })[]'
-// is missing the following properties from type 'Product': category, description, image, name, and 2 more.ts(2345)
-
-
-
