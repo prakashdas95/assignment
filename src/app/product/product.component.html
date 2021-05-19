@@ -10,36 +10,39 @@
         <div>SubTotal</div>
     </div>
 
-    <div class="order-details-header" mat-dialog-content style="border-bottom: 1px solid lightgray;">
-        <div>1</div>
-        <div>sweater</div>
-        <div>2</div>
-        <div>
-            <p>4.000</p>
-            <p>INR</p>
+    <div style="height: 100px;overflow-y: scroll; overflow-x: hidden;">
+        <div class="order-details-header" mat-dialog-content style="border-bottom: 1px solid lightgray;"
+            *ngFor="let order of orders;">
+            <div>{{'#'}}</div>
+            <div>{{order.name}}</div>
+            <div>{{order.count}}</div>
+            <div>
+                <p>{{order.total}}</p>
+                <p>INR</p>
+            </div>
         </div>
-    </div>
 
+    </div>
     <div class="order-details-total" mat-dialog-content style="border-bottom: 1px solid lightgray;">
         <div>Total Items</div>
-        <div>2 Total</div>
-        <div style="font-weight: 600;">4.000 INR</div>
+        <div>{{subtotalItems}} Total</div>
+        <div style="font-weight: 600;">{{"not"}} INR</div>
     </div>
 
     <div class="order-details-tax" mat-dialog-content style="border-bottom: 1px solid lightgray;">
         <div></div>
         <div>Discount</div>
-        <div style="font-weight: 600;">10%</div>
+        <div style="font-weight: 600;">{{discount}}%</div>
     </div>
 
     <div class="order-details-tax" mat-dialog-content style="border-bottom: 1px solid lightgray;">
         <div></div>
         <div>VAT</div>
-        <div style="font-weight: 600;">10%</div>
+        <div style="font-weight: 600;">{{vat}}%</div>
     </div>
 
     <div>
-        <button class="button" mat-button mat-dialog-close>Close</button>
+        <button class="button" mat-button [mat-dialog-close]=true>Close</button>
     </div>
 
 </div>

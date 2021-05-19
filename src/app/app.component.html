@@ -12,7 +12,8 @@
       <div *ngIf="cart.length === 0" class="message">THERE ARE NO PRODUCTS</div>
       <div class="main-container" *ngFor="let item of cart">
         <div style="display: flex;align-items: center; justify-content: space-evenly;">
-          <button id="button-scale" class="clear-button main1" mat-mini-fab aria-label="clear product">
+          <button id="button-scale" class="clear-button main1" mat-mini-fab aria-label="clear product"
+            (click)="clearProductFromCart(item)">
             <span class="material-icons">
               clear
             </span>
@@ -40,7 +41,11 @@
           </button>
         </div>
 
-        <div style="font-size: 20px; color: rgb(105, 105, 105);">{{'total'}}</div>
+        <div style="font-size: 20px; color: rgb(105, 105, 105);">
+          {{
+          productTotalWithoutCharges(item.price,item.count)
+          }}
+        </div>
       </div>
     </main>
 
@@ -53,23 +58,27 @@
       </div>
       <div class="action-box action-box2">
         <div class="action-box-item">
-          <div>0.000 EUR</div>
-          <div>0 items</div>
+          <div>{{subTotalPrice}} EUR</div>
+          <div>{{subTotalItems}} items</div>
         </div>
         <div class="action-box-item">
-          <div>10%</div> <!-- its an input in the design -->
-          <div>0.000 EUR</div>
+          <div>
+            <input matInput style="border: 1px solid lightgray; width:100px" [(ngModel)]="vat">
+          </div>
+          <div>{{vatTotal}} EUR</div>
         </div>
         <div class="action-box-item">
-          <div>10%</div> <!-- its an input in the design -->
-          <div>0.000 EUR</div>
+          <div>
+            <input matInput value="10%" style="border: 1px solid lightgray; width:100px" [(ngModel)]="discount">
+          </div>
+          <div>{{discountTotal}} EUR</div>
         </div>
-        <div class="action-box-item">0.000 EUR</div>
+        <div class="action-box-item">{{grandTotal}} EUR</div>
       </div>
     </main>
 
     <div class="action-buttons">
-      <button class="button cancel">CANCEL SALE</button>
+      <button class="button cancel" (click)="cancelSale()">CANCEL SALE</button>
       <button class="button process" (click)="openDialog()">PROCESS SALE</button>
     </div>
   </div>
