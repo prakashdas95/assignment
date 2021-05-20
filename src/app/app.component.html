@@ -42,38 +42,38 @@
         </div>
 
         <div class="main-container-item-total" style="font-size: 20px; color: rgb(105, 105, 105);">
-          {{item.total}}
+          {{item.total}} INR
         </div>
       </div>
     </main>
 
     <main class="actions">
       <div class="action-box action-box1">
-        <div class="action-box-item">Sub Total</div>
-        <div class="action-box-item">VAT tax</div>
-        <div class="action-box-item">Discount</div>
-        <div class="action-box-item">Total</div>
+        <div class="action-box-item font-weight">Sub Total</div>
+        <div class="action-box-item font-weight">VAT tax</div>
+        <div class="action-box-item font-weight">Discount</div>
+        <div class="action-box-item font-weight">Total</div>
       </div>
       <div class="action-box action-box2">
-        <div class="action-box-item">
+        <div class="action-box-item font-weight">
           <div>{{subTotalPrice}} INR</div>
           <div>{{subTotalItems}} items</div>
         </div>
         <div class="action-box-item">
           <div class="action-box-input">
             <input matInput class="action-input-style" (keyup)="reCalculation()" [formControl]="vat" type="number">
-            <strong class="input-percentage">%</strong>
+            <span class="input-percentage">%</span>
           </div>
-          <div>{{vatTotal}} INR</div>
+          <div class="font-weight">{{vatTotal}} INR</div>
         </div>
         <div class="action-box-item">
           <div class="action-box-input">
             <input matInput class="action-input-style" (keyup)="reCalculation()" [formControl]="discount" type="number">
             <strong class="input-percentage">%</strong>
           </div>
-          <div>{{discountTotal}} INR</div>
+          <div class="font-weight">{{discountTotal}} INR</div>
         </div>
-        <div class="action-box-item">{{grandTotal}} INR</div>
+        <div class="action-box-item grand-total">{{grandTotal}} INR</div>
       </div>
     </main>
 

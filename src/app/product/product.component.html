@@ -13,7 +13,7 @@
     <div style="height: 100px;overflow-y: scroll; overflow-x: hidden;">
         <div class="order-details-header" mat-dialog-content style="border-bottom: 1px solid lightgray;"
             *ngFor="let order of orders;let i = index;">
-            <div>#{{i + 1}}</div>
+            <div>{{i + 1}}</div>
             <div>{{order.name}}</div>
             <div>{{order.count}}</div>
             <div>

@@ -132,12 +132,15 @@
 }
 
 .action-input-style {
-    border: 1px solid lightgray;
+    border: 1px solid rgb(245, 245, 245);
     width:100px; 
     background: whitesmoke;
     height: 20px;
     width: 60px;
     border-radius: 2px;
+}
+.font-weight{
+    font-weight: 500;
 }
 
 .action-box-input{
@@ -150,6 +153,7 @@
 }
 
 .input-percentage{
+    font-weight: 500;
     position: absolute;
     left: 35px;
 }
@@ -169,6 +173,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.grand-total{
+    color: rgb(58, 172, 58);
+    font-weight: 600;
 }
 
 .action-buttons{
@@ -225,7 +234,7 @@
     left: 50%;
     transform: translate(-50%, 0);
     padding-top: 10px;
-    color: white;
+    color: whitesmoke;
     font-weight: 600;
     text-align: center;
     cursor: pointer;
@@ -236,7 +245,7 @@
 .product-item-price{
     position: absolute;
     top: 60px;
-    color: white;
+    color: whitesmoke;
     font-weight: 600;
     width: 100%;
     text-align: center;
@@ -247,7 +256,7 @@
 .product-item-description{
     position: absolute;
     top: 85px;
-    color: white;
+    color: whitesmoke;
     font-size: 12px;
     font-weight: 600;
     width:100%;

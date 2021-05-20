@@ -171,7 +171,6 @@ export class AppComponent implements OnInit {
 
   public getBackgroundStyles(product: any) {
     product = product.match(' ') ? product.split(' ').join('_') : product;
-    console.log(product);
     let color = '';
     switch (product) {
       case 'sweater':
@@ -205,24 +204,19 @@ export class AppComponent implements OnInit {
 
   public getbackcolor(product: any) {
     product = product.match(' ') ? product.split(' ').join('_') : product;
-    console.log(product);
     let color = '';
     switch (product) {
       case 'sweater':
         color = '#71d18b';
-        console.log(product);
         break;
       case 'nivea_pocket':
         color = '#595c80';
-        console.log(product);
         break;
       case 'nivea_pocket_bleu':
         color = '#595c80';
-        console.log(product);
         break;
       case 'chilli_hot_pizza':
         color = '#71d18b';
-        console.log(product);
         break;
       default:
         break;
