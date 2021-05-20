@@ -87,7 +87,10 @@
   <div class="box2">
     <div class="product-container">
       <div class="product-item" *ngFor="let product of products" (click)="clickToAdd(product)">
-        <img class="product-item-image" src="../assets/images/{{product.image}}" alt=" product image">
+        <div [ngStyle]="getbackcolor(product.name)">
+          <img *ngIf="product.image" src="../assets/images/{{product.image}}" class="product-item-image"
+            [ngStyle]="getBackgroundStyles(product.name)">
+        </div>
         <p class="product-item-name">{{product.name | uppercase}}</p>
         <p class="product-item-price">{{product.price}} INR</p>
         <p class="product-item-description">{{product.description}}</p>

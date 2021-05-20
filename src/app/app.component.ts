@@ -168,6 +168,74 @@ export class AppComponent implements OnInit {
   public reCalculation() {
     this.calculateSubTotal(this.cart);
   }
+
+  public getBackgroundStyles(product: any) {
+    product = product.match(' ') ? product.split(' ').join('_') : product;
+    console.log(product);
+    let color = '';
+    switch (product) {
+      case 'sweater':
+        color = '#71d18b'
+        break;
+      case 'nivea_pocket':
+        color = '#595c80';
+        break;
+      case 'nivea_pocket_bleu':
+        color = '#595c80'
+
+        break;
+      case 'chilli_hot_pizza':
+        color = '#71d18b'
+        break;
+      default:
+        break;
+    }
+    let myStyles = {
+      'height': '100%',
+      'width': '100%',
+      'background-size': 'cover',
+      'background-repeat': 'no-repeat',
+      'background-position': 'center',
+      'border-radius': '5px',
+      'background-color': `linear-gradient(to right bottom, ${color},${color})`
+    };
+
+    return myStyles;
+  }
+
+  public getbackcolor(product: any) {
+    product = product.match(' ') ? product.split(' ').join('_') : product;
+    console.log(product);
+    let color = '';
+    switch (product) {
+      case 'sweater':
+        color = '#71d18b';
+        console.log(product);
+        break;
+      case 'nivea_pocket':
+        color = '#595c80';
+        console.log(product);
+        break;
+      case 'nivea_pocket_bleu':
+        color = '#595c80';
+        console.log(product);
+        break;
+      case 'chilli_hot_pizza':
+        color = '#71d18b';
+        console.log(product);
+        break;
+      default:
+        break;
+    }
+
+    let myStyles = {
+      'height': '100%',
+      'width': '100%',
+      'border-radius': '5px',
+      'background-color': `${color}`
+    };
+    return myStyles;
+  }
 }
 
 
