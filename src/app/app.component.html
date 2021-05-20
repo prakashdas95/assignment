@@ -57,24 +57,25 @@
       </div>
       <div class="action-box action-box2">
         <div class="action-box-item">
-          <div>{{subTotalPrice}} EUR</div>
+          <div>{{subTotalPrice}} INR</div>
           <div>{{subTotalItems}} items</div>
         </div>
         <div class="action-box-item">
           <div class="action-box-input">
-            <input matInput class="action-input-style" [(ngModel)]="vat">
+            <!-- (keyup)="isNumberKey($event)" -->
+            <input matInput class="action-input-style" (keyup)="reCalculation()" [formControl]="vat" type="number">
             <strong class="input-percentage">%</strong>
           </div>
-          <div>{{vatTotal}} EUR</div>
+          <div>{{vatTotal}} INR</div>
         </div>
         <div class="action-box-item">
           <div class="action-box-input">
-            <input matInput class="action-input-style" [(ngModel)]="discount">
+            <input matInput class="action-input-style" (keyup)="reCalculation()" [formControl]="discount" type="number">
             <strong class="input-percentage">%</strong>
           </div>
-          <div>{{discountTotal}} EUR</div>
+          <div>{{discountTotal}} INR</div>
         </div>
-        <div class="action-box-item">{{grandTotal}} EUR</div>
+        <div class="action-box-item">{{grandTotal}} INR</div>
       </div>
     </main>
 
@@ -88,9 +89,10 @@
   <div class="box2">
     <div class="product-container">
       <div class="product-item" *ngFor="let product of products" (click)="clickToAdd(product)">
+        <div class="linear"></div>
         <img class="product-item-image" src="../assets/images/{{product.image}}" alt=" product image">
         <p class="product-item-name">{{product.name | uppercase}}</p>
-        <p class="product-item-price">{{product.price}}</p>
+        <p class="product-item-price">{{product.price}} INR</p>
         <p class="product-item-description">{{product.description}}</p>
       </div>
     </div>
