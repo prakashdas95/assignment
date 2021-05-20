@@ -197,7 +197,7 @@
 .product-item-price{
     position: absolute;
     top: 60px;
-    color: white;
+    color: whitesmoke;
     font-weight: 600;
     width: 100%;
     text-align: center;
@@ -209,7 +209,7 @@
 .product-item-description{
     position: absolute;
     top: 85px;
-    color: white;
+    color: whitesmoke;
     font-weight: 600;
     width:100%;
     text-align: center;

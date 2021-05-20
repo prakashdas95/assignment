@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { MatDialog } from '@angular/material/dialog';
 import { ProductComponent } from './product/product.component';
-import { filter, map, tap } from 'rxjs/operators';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 export interface Product {
   category: string;
   description: string;
@@ -21,18 +20,16 @@ export interface Product {
 })
 export class AppComponent implements OnInit {
 
-  public products: any = []; // check type assignment
+  public products: Product[] = [];
 
   public cart: Product[] = [];
   public count: number = 0;
 
   public subTotalPrice: number = 0;
   public subTotalItems: number = 0;
-  // public total: number = 0;
 
   public vat = new FormControl(0);
   public vatTotal: string = '0';
-  // public discount = '10';
   public discount = new FormControl(0);
 
   public discountTotal: string = '0';
@@ -51,7 +48,6 @@ export class AppComponent implements OnInit {
           e.total = 0;
         });
         this.products = data;
-        console.log(data);
       });
 
   }
@@ -71,7 +67,6 @@ export class AppComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(success => {
-      console.log(`Dialog result: ${success}`);
       if (success) {
         this.cancelSale();
       }
@@ -83,31 +78,23 @@ export class AppComponent implements OnInit {
 
     if (filteredCartItems) {
       this.cart = filteredCartItems;
-      console.log('filteredCartItems: ', filteredCartItems);
       this.calculateSubTotal(filteredCartItems);
     }
   }
 
 
   public addItemToCart(cart: Product[], item: Product) {
-    console.log('vat', this.vat.value);
-
     const existingCartItem = cart.find(product => product.name === item.name);
     if (existingCartItem) {
-      console.log('existingCartItem');
-      console.log(existingCartItem);
       return cart.map(cartItem => {
 
         if (cartItem.name === item.name) {
           cartItem.count++;
-          console.log('countttt', cartItem.count);
           return { ...cartItem, total: +cartItem.price * cartItem.count }
         }
         return cartItem;
       });
     }
-    console.log(item);
-    console.log('unique');
     item.count = item.count === 0 ? 1 : item.count;
     return [...cart, { ...item, count: 1, total: +item.price * item.count }];
   }
@@ -115,7 +102,6 @@ export class AppComponent implements OnInit {
 
   public increaseProductCount(item: Product | any) {
     item.count++;
-    console.log('test increase', item);
     item.total = item.count * +item.price
     this.calculateSubTotal(this.cart);
   }
@@ -125,10 +111,8 @@ export class AppComponent implements OnInit {
       return;
     }
     item.count--;
-    console.log('test decrease', item);
     item.total = item.count * +item.price
     this.calculateSubTotal(this.cart);
-
   }
 
 
@@ -155,24 +139,18 @@ export class AppComponent implements OnInit {
   }
 
   public calculateSubTotal(cartItems: Product[]) {
-    // console.log(typeof cartItems[0].price, typeof cartItems[0].count);
     this.subTotalItems = cartItems.reduce((acc, cur) => acc + cur.count, 0);
     this.subTotalPrice = cartItems.reduce((acc, cur) => acc + cur.count * +cur.price, 0);
-    // cartItems.reduce((acc, acc) => acc. + cur )
 
     this.vatTotal = this.calculateVAT(this.vat.value, this.subTotalPrice);
-    // console.log('vat total: ', this.vatTotal);
 
     this.discountTotal = this.calculateDiscount(this.discount.value, this.subTotalPrice);
-    // console.log('vat subtotal: ', this.subTotalPrice);
 
     this.grandTotal = this.grandTotalCalculation(this.vatTotal, this.discountTotal, this.subTotalPrice);
-    // console.log('grandTotal: ', this.grandTotal);
 
   }
 
   public calculateVAT(vat: string, subTotal: number) {
-    // console.log('vat', vat);
     return (subTotal * Number(vat) / 100).toFixed(2).toString();
   }
 
@@ -183,10 +161,6 @@ export class AppComponent implements OnInit {
   public grandTotalCalculation(vatTotal: string, discountTotal: string, subTotalPrice: number): number {
     return +(Number(vatTotal) + Number(discountTotal) + subTotalPrice).toFixed(2);
   }
-
-  // public calculateTotal() {
-  //   this.total = 5;
-  // }
 
   public productTotalWithoutCharges(price: number | string, count: number) {
     return +price * count;
