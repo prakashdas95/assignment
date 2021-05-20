@@ -28,10 +28,9 @@ export class AppComponent implements OnInit {
   public subTotalPrice: number = 0;
   public subTotalItems: number = 0;
 
-  public vat = new FormControl(0);
+  public vat = new FormControl(10);
   public vatTotal: string = '0';
-  public discount = new FormControl(0);
-
+  public discount = new FormControl(10);
   public discountTotal: string = '0';
 
   public grandTotal: number = 0;

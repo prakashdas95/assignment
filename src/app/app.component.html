@@ -2,16 +2,16 @@
   <div class="box1">
     <nav class="nav">
       <ul class="nav-box">
-        <li class="item">PRODUCTS</li>
+        <li class="item item1">PRODUCTS</li>
         <li class="item item2">PRICE</li>
         <li class="item item3">QUANTITY</li>
-        <li class="item">TOTAL</li>
+        <li class="item item4">TOTAL</li>
       </ul>
     </nav>
     <main class="main">
       <div *ngIf="cart.length === 0" class="message">THERE ARE NO PRODUCTS</div>
       <div class="main-container" *ngFor="let item of cart">
-        <div style="display: flex;align-items: center; justify-content: space-evenly;">
+        <div class="main-container-item-name">
           <button id="button-scale" class="clear-button main1" mat-mini-fab aria-label="clear product"
             (click)="clearProductFromCart(item)">
             <span class="material-icons">
@@ -22,7 +22,7 @@
           <div style="font-size: 20px; color: rgb(105, 105, 105);">{{item.name}}</div>
         </div>
 
-        <div style="font-size: 20px; color: rgb(105, 105, 105);">{{item.price}}</div>
+        <div class="main-container-item-price" style="font-size: 20px; color: rgb(105, 105, 105);">{{item.price}}</div>
 
         <div class="quantity-box">
           <button id="button-scale" mat-mini-fab aria-label="plus product" (click)="increaseProductCount(item)">
@@ -41,8 +41,7 @@
           </button>
         </div>
 
-        <div style="font-size: 20px; color: rgb(105, 105, 105);">
-          <!-- {{ productTotalWithoutCharges(item.price,item.count)}} -->
+        <div class="main-container-item-total" style="font-size: 20px; color: rgb(105, 105, 105);">
           {{item.total}}
         </div>
       </div>
@@ -88,7 +87,6 @@
   <div class="box2">
     <div class="product-container">
       <div class="product-item" *ngFor="let product of products" (click)="clickToAdd(product)">
-        <div class="linear"></div>
         <img class="product-item-image" src="../assets/images/{{product.image}}" alt=" product image">
         <p class="product-item-name">{{product.name | uppercase}}</p>
         <p class="product-item-price">{{product.price}} INR</p>
