@@ -86,15 +86,12 @@
 
 
   <div class="box2">
-
     <div class="product-container">
       <div class="product-item" *ngFor="let product of products" (click)="clickToAdd(product)">
         <img class="product-item-image" src="../assets/images/{{product.image}}" alt=" product image">
         <p class="product-item-name">{{product.name | uppercase}}</p>
         <p class="product-item-price">{{product.price}}</p>
         <p class="product-item-description">{{product.description}}</p>
-        <!-- <p src='assets/image/clothing.jpg>product.image</p> -->
-        <!-- <p>product.category</p> -->
       </div>
     </div>
 
