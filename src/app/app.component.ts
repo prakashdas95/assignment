@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { MatDialog } from '@angular/material/dialog';
-import { ProductComponent } from './product/product.component';
+import { ReceiptComponent } from './receipt/receipt.component';
 import { FormControl } from '@angular/forms';
 export interface Product {
   category: string;
@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
 
 
   public openDialog() {
-    const dialogRef = this.dialog.open(ProductComponent, {
+    const dialogRef = this.dialog.open(ReceiptComponent, {
       height: '500px',
       width: '400px',
       data: {

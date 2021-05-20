@@ -12,10 +12,10 @@ interface Orders {
 
 @Component({
   selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  templateUrl: './receipt.component.html',
+  styleUrls: ['./receipt.component.css']
 })
-export class ProductComponent implements OnInit {
+export class ReceiptComponent implements OnInit {
 
   public orders: Product[] = [];
   public subTotalPrice: number = 0
